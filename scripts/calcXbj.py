@@ -6,10 +6,10 @@ import numpy as np
 import ROOT as R
 
 # Open data dictionary produced via calcQNY.py
-dd = pickle.load(open('dicts/dataDictQNY.pkl', 'rb'))
+dd = pickle.load(open('../dicts/dataDictQNY.pkl', 'rb'))
 
 # Open the ROOT file created via calcQNY.py
-rof = R.TFile('shms.root', 'read')
+rof = R.TFile('../data/shms.root', 'read')
 
 # Convert histos in numpy arrays for easier manipulation
 for tar, tar_dict in dd.items():
@@ -68,9 +68,9 @@ for tar, tar_dict in dd.items():
         eprime_nz_qny_err_list.append(dd[tar]['eprime_qny_err'][index][dd[tar]['eprime_qny'][index]>0.0])
     # Overwrite previous E' arrays with truncated arrays
     dd[tar]['eprime_val']     = eprime_nz_val_list
-    dd[tar]['eprime_ry']      = eprime_nz_qny_list
+    dd[tar]['eprime_ry']      = eprime_nz_ry_list
     dd[tar]['eprime_qny']     = eprime_nz_qny_list
-    dd[tar]['eprime_ry_err']  = eprime_nz_qny_err_list
+    dd[tar]['eprime_ry_err']  = eprime_nz_ry_err_list
     dd[tar]['eprime_qny_err'] = eprime_nz_qny_err_list
     
 
@@ -100,4 +100,4 @@ for tar, tar_dict in dd.items():
     dd[tar]['xbj_calc_qny_err'] = xbj_calc_nz_qny_err_list
 
 # Save the dictionary with calculated xbj values into a pickle file
-pickle.dump(dd, open('dicts/dataDictXbj.pkl', 'wb'))
+pickle.dump(dd, open('../dicts/dataDictXbj.pkl', 'wb'))

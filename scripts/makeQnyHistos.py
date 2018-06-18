@@ -8,7 +8,7 @@ import ROOT as R
 startTime = time.time()
 
 # Open data dictionary produced via makeDict.py
-dd = pickle.load(open('dicts/dataDict.pkl', 'rb'))
+dd = pickle.load(open('../dicts/dataDict.pkl', 'rb'))
 
 # Chain ROOT files together per momentum setting
 for tar, tar_dict in dd.items():
@@ -26,10 +26,10 @@ for tar, tar_dict in dd.items():
         dd[tar]['tree_chain'].append(tree_chain)
 
 # Save the dictionary with chained ROOT files into a pickle file
-pickle.dump(dd, open('dicts/dataDictQNY.pkl', 'wb'))
+pickle.dump(dd, open('../dicts/dataDictQNY.pkl', 'wb'))
 
 # Create ROOT output file with histograms
-rof = R.TFile('shms.root', 'recreate')
+rof = R.TFile('../data/shms.root', 'recreate')
 for tar, tar_dict in dd.items():
     # Add LaTeX format for target strings
     if (tar == 'be9') : tarStr = '{}^{9}Be'

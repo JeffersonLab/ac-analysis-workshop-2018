@@ -5,8 +5,8 @@ import glob, string, pickle
 import numpy as np
 
 # Utilize glob to populate list of data & report files
-df = glob.glob('data/shms_replay_production_*_-1.root')
-rf = glob.glob('reports/replay_shms_production_*_-1.report')
+df = glob.glob('../data/shms_replay_production_*_-1.root')
+rf = glob.glob('../reports/replay_shms_production_*_-1.report')
 # Sort the lists for consistency
 df.sort(); rf.sort()
 
@@ -121,4 +121,4 @@ for tar, tar_dict in dd.items():
         dd[tar]['ecq'].append(np.sum(dd[tar]['ecq_list'][index]))
 
 # Save the dictionary into a pickle file
-pickle.dump(dd, open('dicts/dataDict.pkl', 'wb'))
+pickle.dump(dd, open('../dicts/dataDict.pkl', 'wb'))
