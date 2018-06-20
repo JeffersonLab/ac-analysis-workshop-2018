@@ -1,6 +1,6 @@
 #*#
 *~
 *.pkl
-*.root
+data/*.root
 *.png
 *.pdf
