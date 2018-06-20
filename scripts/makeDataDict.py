@@ -121,4 +121,4 @@ for tar, tar_dict in dd.items():
         dd[tar]['ecq'].append(np.sum(dd[tar]['ecq_list'][index]))
 
 # Save the dictionary into a pickle file
-pickle.dump(dd, open('../dicts/dataDict.pkl', 'wb'))
+pickle.dump(dd, open('../ddicts/dataDict.pkl', 'wb'))

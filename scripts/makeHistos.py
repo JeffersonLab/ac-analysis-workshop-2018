@@ -7,8 +7,8 @@ import ROOT as R
 # Define the system clock
 startTime = time.time()
 
-# Open data dictionary produced via makeDict.py
-dd = pickle.load(open('../dicts/dataDict.pkl', 'rb'))
+# Open data dictionary produced via makeDataDict.py
+dd = pickle.load(open('../ddicts/dataDict.pkl', 'rb'))
 
 # Chain ROOT files together per momentum setting
 for tar, tar_dict in dd.items():
@@ -26,7 +26,7 @@ for tar, tar_dict in dd.items():
         dd[tar]['tree_chain'].append(tree_chain)
 
 # Save the dictionary with chained ROOT files into a pickle file
-pickle.dump(dd, open('../dicts/dataDictQNY.pkl', 'wb'))
+pickle.dump(dd, open('../ddicts/dataDictQNY.pkl', 'wb'))
 
 # Create ROOT output file with histograms
 rof = R.TFile('../data/shms.root', 'recreate')

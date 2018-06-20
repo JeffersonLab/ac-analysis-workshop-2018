@@ -5,10 +5,10 @@ import pickle
 import numpy as np
 import ROOT as R
 
-# Open data dictionary produced via calcQNY.py
-dd = pickle.load(open('../dicts/dataDictQNY.pkl', 'rb'))
+# Open data dictionary produced via makeDataDict.py
+dd = pickle.load(open('../ddicts/dataDictQNY.pkl', 'rb'))
 
-# Open the ROOT file created via calcQNY.py
+# Open the ROOT file created via makeHistos.py
 rof = R.TFile('../data/shms.root', 'read')
 
 # Convert histos in numpy arrays for easier manipulation
@@ -73,7 +73,6 @@ for tar, tar_dict in dd.items():
     dd[tar]['eprime_ry_err']  = eprime_nz_ry_err_list
     dd[tar]['eprime_qny_err'] = eprime_nz_qny_err_list
     
-
 # Define function to calculate xbj from bins in E'
 mp = 0.93827231 # (GeV) mass of proton
 def calc_xbj(ep, eb, theta) :
@@ -100,4 +99,4 @@ for tar, tar_dict in dd.items():
     dd[tar]['xbj_calc_qny_err'] = xbj_calc_nz_qny_err_list
 
 # Save the dictionary with calculated xbj values into a pickle file
-pickle.dump(dd, open('../dicts/dataDictXbj.pkl', 'wb'))
+pickle.dump(dd, open('../ddicts/dataDictXbj.pkl', 'wb'))
